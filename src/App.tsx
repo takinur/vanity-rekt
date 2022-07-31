@@ -1,29 +1,29 @@
-import { useState } from 'react'
+import { useState, Component } from 'react'
 import reactLogo from './assets/react.svg'
-import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import TodoList from './components/todo-list'
+import CreateTodo from './components/create-todo'
+import EditTodo from './components/edit-todo'
 
-function App() {
+
+export default function App() {
   const [count, setCount] = useState(0)
+  const d = new Date()
 
   return (
     <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<TodoList />} />
+          <Route path="/create" element={<CreateTodo />} />
+          <Route path="/edit/:id" element={<EditTodo />} />
+        </Routes>
+      </Router>
       <div>
-        <h1>Well Hello there!</h1>
+        <h1 className='text-red-500'>Well Hello there!  {d.getHours() % 12 } {d.getMinutes() } { d.getSeconds()}</h1>
       </div>
-      <h1 className='text-red-500'>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
     </div>
   )
 }
 
-export default App
