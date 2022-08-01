@@ -1,10 +1,7 @@
 import { useState, Component } from 'react'
-import reactLogo from './assets/react.svg'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import TodoList from './components/todo-list'
-import CreateTodo from './components/create-todo'
-import EditTodo from './components/edit-todo'
-
+import TodoApp from './components/todo-app'
+import TasksData from './components/API'
 
 export default function App() {
   const [count, setCount] = useState(0)
@@ -14,9 +11,9 @@ export default function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<TodoList />} />
-          <Route path="/create" element={<CreateTodo />} />
-          <Route path="/edit/:id" element={<EditTodo />} />
+          <Route path="/" element={<TodoApp tasks ={TasksData} />} />
+          {/* <Route path="/create" element={<CreateTodo />} />
+          <Route path="/edit/:id" element={<EditTodo />} /> */}
         </Routes>
       </Router>
       <div>
