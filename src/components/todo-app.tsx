@@ -8,7 +8,16 @@ const FILTER_MAP = {
   Active: (task) => !task.completed,
   Done: (task) => task.completed,
 };
-const FILTER_NAMES = Object.keys(FILTER_MAP);
+console.log(FILTER_MAP);
+//collect array of filter names
+
+//Used for LOOP for HMR Issue
+const FILTER_NAMES: string[] = [];
+for (let key in FILTER_MAP) {
+  FILTER_NAMES.push(key);
+}
+//BUG:Better option but HMR 
+//const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 const todoApp = (props) => {
   const [tasks, setTasks] = useState(props.tasks);
@@ -34,7 +43,8 @@ const todoApp = (props) => {
   //List of TODOS
   const taskList = tasks
     .filter(FILTER_MAP[filter])
-    .slice(0).reverse() //Reverse array to show the newest tasks first
+    .slice(0)
+    .reverse() //Reverse array to show the newest tasks first
     .map((task) => (
       <Todo
         {...task}
@@ -70,18 +80,22 @@ const todoApp = (props) => {
   }
 
   return (
-    <div className="todoapp stack-large">
-      <h1>TodoMatic</h1>
-      <Form addTask={addTask} />
-      <div className="filters btn-group stack-exception">{fiterList}</div>
-      <h2 id="list-heading">{remain}</h2>
-      <ul
-        role="list"
-        className="todo-list stack-large stack-exception"
-        aria-labelledby="list-heading"
-      >
-        {taskList}
-      </ul>
+    <div className="border-2 border-red-500 flex justify-center">
+      <div className="w-2/3 border-2 border-green-400">
+        <h1 className="font-semibold text-indigo-500 text-lg">
+          React Todo App with TailwindCSS, Vite and Typescript
+        </h1>
+        <Form addTask={addTask} />
+        <div className="filters btn-group stack-exception">{fiterList}</div>
+        <h2 id="list-heading">{remain}</h2>
+        <ul
+          role="list"
+          className="border-2 border-indigo-500"
+          aria-labelledby="list-heading"
+        >
+          {taskList}
+        </ul>
+      </div>
     </div>
   );
 };
