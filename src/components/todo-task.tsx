@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Input from "./Input";
 
 const Todo = (props) => {
   const [isEditing, setEditing] = useState(false);
@@ -20,11 +21,12 @@ const Todo = (props) => {
         <label className="todo-label" htmlFor={props.id}>
           New name for {props.name}
         </label>
-        <input
+        <Input
           id={props.id}
-          className="todo-text"
           type="text"
-          onChange={handleChange}
+          className="mt-1 block w-full"
+          isFocused={true}
+          handleChange={handleChange}
         />
       </div>
       <div className="btn-group">

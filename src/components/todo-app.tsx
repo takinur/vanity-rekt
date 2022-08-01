@@ -8,8 +8,6 @@ const FILTER_MAP = {
   Active: (task) => !task.completed,
   Done: (task) => task.completed,
 };
-console.log(FILTER_MAP);
-//collect array of filter names
 
 //Used for LOOP for HMR Issue
 const FILTER_NAMES: string[] = [];
@@ -80,9 +78,9 @@ const todoApp = (props) => {
   }
 
   return (
-    <div className="border-2 border-red-500 flex justify-center">
+    <div className="border-2 border-red-500 flex justify-center py-7 bg-gray-300">
       <div className="w-2/3 border-2 border-green-400">
-        <h1 className="font-semibold text-indigo-500 text-lg">
+        <h1 className="font-semibold text-green-500 text-2xl text-center">
           React Todo App with TailwindCSS, Vite and Typescript
         </h1>
         <Form addTask={addTask} />

@@ -12,8 +12,6 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/" element={<TodoApp tasks ={TasksData} />} />
-          {/* <Route path="/create" element={<CreateTodo />} />
-          <Route path="/edit/:id" element={<EditTodo />} /> */}
         </Routes>
       </Router>
       <div>
