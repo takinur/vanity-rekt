@@ -16,7 +16,13 @@ const todoApp = (props) => {
   }
   //List of TODOS
   const taskList = tasks.map((task) => (
-    <Todo key={task.id} toggleTaskCompleted={toggleTaskCompleted} removeTask={removeTask} {...task} />
+    <Todo
+      {...task}
+      key={task.id}
+      toggleTaskCompleted={toggleTaskCompleted}
+      removeTask={removeTask}
+      editTask={editTask}
+    />
   ));
   const addTask = (name) => {
     // alert(`Added ${name}`);
@@ -28,10 +34,20 @@ const todoApp = (props) => {
     tasks.filter((task) => !task.completed).length
   } ${tasksNoun} remaining`;
   //Remove a todo
-  function removeTask (id){
+  function removeTask(id) {
     const updatedTasks = tasks.filter((task) => task.id !== id);
     setTasks(updatedTasks);
-  };
+  }
+  //Edit a todo
+  function editTask(id, name) {
+    const editedTask = tasks.map((task) => {
+      if (id === task.id) {
+        return { ...task, name };
+      }
+      return task;
+    });
+    setTasks(editedTask);
+  }
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
