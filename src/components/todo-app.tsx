@@ -3,6 +3,13 @@ import FilterButton from "./FilterButton";
 import Form from "./From";
 import Todo from "./todo-task";
 
+const FILTER_MAP = {
+  All: () => true,
+  Active: (task) => !task.completed,
+  Done: (task) => task.completed,
+};
+const FILTER_NAMES = Object.keys(FILTER_MAP);
+
 const todoApp = (props) => {
   const [tasks, setTasks] = useState(props.tasks);
   function toggleTaskCompleted(id) {
@@ -14,16 +21,29 @@ const todoApp = (props) => {
     });
     setTasks(updatedTasks);
   }
-  //List of TODOS
-  const taskList = tasks.map((task) => (
-    <Todo
-      {...task}
-      key={task.id}
-      toggleTaskCompleted={toggleTaskCompleted}
-      removeTask={removeTask}
-      editTask={editTask}
+  //Filter Tasks
+  const [filter, setFilter] = useState("All");
+  const fiterList = FILTER_NAMES.map((name) => (
+    <FilterButton
+      key={name}
+      name={name}
+      isPressed={name === filter}
+      setFilter={setFilter}
     />
   ));
+  //List of TODOS
+  const taskList = tasks
+    .filter(FILTER_MAP[filter])
+    .slice(0).reverse() //Reverse array to show the newest tasks first
+    .map((task) => (
+      <Todo
+        {...task}
+        key={task.id}
+        toggleTaskCompleted={toggleTaskCompleted}
+        removeTask={removeTask}
+        editTask={editTask}
+      />
+    ));
   const addTask = (name) => {
     // alert(`Added ${name}`);
     setTasks([...tasks, { id: tasks.length + 1, name, completed: false }]);
@@ -48,15 +68,12 @@ const todoApp = (props) => {
     });
     setTasks(editedTask);
   }
+
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
       <Form addTask={addTask} />
-      <div className="filters btn-group stack-exception">
-        <FilterButton name="All" />
-        <FilterButton name="Done" />
-        <FilterButton name="Eh" />
-      </div>
+      <div className="filters btn-group stack-exception">{fiterList}</div>
       <h2 id="list-heading">{remain}</h2>
       <ul
         role="list"
