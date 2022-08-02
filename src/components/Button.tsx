@@ -3,7 +3,7 @@ import React from 'react';
 // interface to declare all our prop types
 interface Props {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   className?: string, //Custom class or button classes  / default, primary, info, success, warning, danger, dark sm, md, lg
   disabled?: boolean;
 }

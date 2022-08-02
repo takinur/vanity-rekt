@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
+import Label from "./Label";
 
 function Form(props) {
   const [name, setName] = useState("");
@@ -18,12 +19,12 @@ function Form(props) {
   return (
     <form onSubmit={handleSubmit}>
       <div className="py-4 text-center">
-        <label
-          htmlFor={name}
+        <Label
+          forInput={name}
           className="text-center font-sans text-2xl text-green-600 mb-4"
         >
           What is on your bucket list?
-        </label>
+        </Label>
         <Input
           type="text"
           name="name"

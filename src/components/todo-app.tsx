@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import FilterButton from "./FilterButton";
 import Form from "./From";
 import Todo from "./todo-task";
@@ -14,7 +14,7 @@ const FILTER_NAMES: string[] = [];
 for (let key in FILTER_MAP) {
   FILTER_NAMES.push(key);
 }
-//BUG:Better option but HMR 
+//BUG:Better option but HMR
 //const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 const todoApp = (props) => {
@@ -78,17 +78,20 @@ const todoApp = (props) => {
   }
 
   return (
-    <div className="border-2 flex justify-center py-7 bg-gray-200 h-screen">
+    <div className="border-2 flex justify-center py-7 bg-gray-200 min-h-screen">
       <div className="container px-6 py-10 mx-auto md:mt-11 bg-gray-50 rounded-2xl w-full md:w-4/5 pb-9">
         <h1 className="font-semibold font-mono text-dark text-3xl uppercase text-center mb-6">
           React Todo App with TailwindCSS, Vite and Typescript
         </h1>
         <Form addTask={addTask} />
-        <div className="filters btn-group stack-exception">{fiterList}</div>
-        <h2 id="list-heading">{remain}</h2>
+
+        <div className="flex items-center justify-center space-x-2 sm:space-x-3 w-3/4 mx-auto">         
+          {fiterList}
+        </div>
+        <h2 className="font-sans font-semibold text-lg text-gray-800 mt-3">{remain}</h2>
         <ul
           role="list"
-          className="border-2 border-indigo-500"
+          className="w-full"
           aria-labelledby="list-heading"
         >
           {taskList}
