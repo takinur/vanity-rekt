@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
 import Label from "./Label";
@@ -34,7 +34,7 @@ function Form(props) {
           isFocused={true}
           handleChange={handleChange}
         />
-        <Button className="w-3/4 mx-auto py-2 px-6 text-indigo-700 mt-4 rounded-sm border-2 border-indigo-700 shadow-lg block hover:bg-indigo-600 hover:text-white" onClick={() => alert ('Noni')}>
+        <Button className="w-3/4 mx-auto py-2 px-6 text-indigo-700 mt-4 rounded-sm border-2 border-indigo-700 shadow-lg block hover:bg-indigo-600 hover:text-white">
           Add
         </Button>
       </div>
