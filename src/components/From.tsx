@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Input from "./Input";
+import Button from "./Button";
 
 function Form(props) {
   const [name, setName] = useState("");
@@ -16,25 +17,26 @@ function Form(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2 className="font-mono ">
-        <label htmlFor="new-todo-input" className="label__lg">
-          What needs to be done?
+      <div className="py-4 text-center">
+        <label
+          htmlFor={name}
+          className="text-center font-sans text-2xl text-green-600 mb-4"
+        >
+          What is on your bucket list?
         </label>
-      </h2>
-      <div className="max-w-md">
         <Input
           type="text"
           name="name"
+          id={name}
           value={name}
-          className="mt-1 block w-full"
+          className="mt-4 py-3 px-7 block bg-gray-200 w-3/4 mx-auto"
           isFocused={true}
           handleChange={handleChange}
         />
+        <Button className="w-3/4 mx-auto py-2 px-6 text-indigo-700 mt-4 rounded-sm border-2 border-indigo-700 shadow-lg block hover:bg-indigo-600 hover:text-white" onClick={() => alert ('Noni')}>
+          Add
+        </Button>
       </div>
-
-      <button type="submit" className="btn btn__primary btn__lg">
-        Add
-      </button>
     </form>
   );
 }
