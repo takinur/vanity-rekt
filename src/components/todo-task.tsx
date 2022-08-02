@@ -16,8 +16,8 @@ const Todo = (props) => {
     setNewName("");
     setEditing(false);
   }
-  const handleClick = event => {
-    event.preventDefault();
+  const handleClick = () => {
+    // e.preventDefault();
     setEditing(true);
     setNewName(props.name);
   }
