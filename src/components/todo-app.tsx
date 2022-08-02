@@ -78,9 +78,9 @@ const todoApp = (props) => {
   }
 
   return (
-    <div className="border-2 border-red-500 flex justify-center py-7 bg-gray-300">
-      <div className="w-2/3 border-2 border-green-400">
-        <h1 className="font-semibold text-green-500 text-2xl text-center">
+    <div className="border-2 flex justify-center py-7 bg-gray-200 h-screen">
+      <div className="container px-6 py-10 mx-auto md:mt-11 bg-gray-50 rounded-2xl w-full md:w-4/5 pb-9">
+        <h1 className="font-semibold font-mono text-dark text-3xl uppercase text-center mb-6">
           React Todo App with TailwindCSS, Vite and Typescript
         </h1>
         <Form addTask={addTask} />

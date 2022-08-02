@@ -1,29 +1,32 @@
 import React from 'react';
 
-enum ButtonTypes {
-  "button",
-  "submit",
-  "reset",
-  undefined
-} 
-
-interface ButtonProps {
-    type?: ButtonTypes;
-    name?: string;
+// interface to declare all our prop types
+interface Props {
+  children: React.ReactNode;
+  onClick: () => void;
+  className?: string, //Custom class or button classes  / default, primary, info, success, warning, danger, dark sm, md, lg
+  disabled?: boolean;
 }
 
-export default function Button({ type = 'submit', className = '', processing, children }) {
-    return (
-        <button
-            type={type}
-            className={
-                `inline-flex items-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-gray-900 transition ease-in-out duration-150 ${
-                    processing && 'opacity-25'
-                } ` + className
-            }
-            disabled={processing}
-        >
-            {children}
-        </button>
-    );
-}
+// button component, consuming props
+const Button: React.FC<Props> = ({
+  children,
+  onClick,
+  className,
+  disabled,
+  ...rest
+}) => {
+  return (
+    <button
+      type='submit'
+      className={className + (disabled ? ' disabled' : '')}
+      onClick={onClick}
+      disabled={disabled}
+      {...rest}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default Button;

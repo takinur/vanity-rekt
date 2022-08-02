@@ -9,15 +9,12 @@ export default function App() {
 
   return (
     <div className="App">
+      {/* Router is not required still added */}
       <Router>
         <Routes>
           <Route path="/" element={<TodoApp tasks ={TasksData} />} />
         </Routes>
-      </Router>
-      <div>
-        <h1 className='text-red-500'>Well Hello there!  {d.getHours() % 12 } {d.getMinutes() } { d.getSeconds()}</h1>
-      </div>
-      
+      </Router>     
     </div>
   )
 }
